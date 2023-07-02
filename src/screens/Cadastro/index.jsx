@@ -1,8 +1,10 @@
-import { useState } from "react";
-import { Redirect } from "react-router-dom/cjs/react-router-dom";
+import { useContext, useState } from "react";
+import { Link, Redirect } from "react-router-dom/cjs/react-router-dom";
 import Swal from "sweetalert2";
+import headerContext from "../../context/providers/headerContext";
 
 function Cadastro() {
+  const { setPageUrl } = useContext(headerContext);
   const [state, setState] = useState({
     name: '',
     gender: 0,
@@ -58,7 +60,7 @@ function Cadastro() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(state),
+      body: state,
     })
       .then((response) => {
         if (response.status === 201) {
@@ -69,6 +71,7 @@ function Cadastro() {
         }
       })
       .then((data) => {
+        setPageUrl('/app');
         setIsSucess(true);
       })
       .catch((error) => {
@@ -79,6 +82,10 @@ function Cadastro() {
         })
       });
   };
+
+  const handleClickCadastre = () => {
+    setPageUrl('/');
+  }
 
   if (isSucess) return <Redirect to="/app" />
 
@@ -167,6 +174,19 @@ function Cadastro() {
           Cadastrar
         </button>
       </form>
+
+      <div>
+        <p>
+          Já possui conta?&nbsp;
+          <Link
+            onClick={ handleClickCadastre }
+            to="/"
+          >
+            Faça o Login
+          </Link>
+          .
+        </p>
+      </div>
     </div>
   )
 }

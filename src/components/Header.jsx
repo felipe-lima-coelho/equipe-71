@@ -33,7 +33,7 @@ function Header() {
     history.goBack();
   };
 
-  if (pageUrl !== '/') {
+  if (pageUrl !== '/' && pageUrl !== '/cadastro') {
     return (
       <header className={ styles.headerContainer }>
         {
