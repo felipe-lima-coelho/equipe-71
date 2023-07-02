@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { Link, Redirect } from 'react-router-dom/cjs/react-router-dom';
 import { useState } from 'react';
 import styles from './styles.module.css';
+import Swal from 'sweetalert2';
 
 function Login() {
   const [state, setState] = useState({
@@ -8,6 +9,7 @@ function Login() {
     password: '',
   });
   const [isValid, setIsValid] = useState(false);
+  const [isSucess, setIsSucess] = useState(false);
 
   const checkEmail = () => {
     const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,14 +39,30 @@ function Login() {
       },
       body: JSON.stringify(state),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status === 201) {
+          return response.json()
+        }
+        if (response.status === 422) {
+          throw new Error("Erro nos dados enviados!");
+        }
+        if (response.status === 404) {
+          throw new Error("Não foi possível encontrar o email e/ou senha!");
+        }
+      })
       .then((data) => {
-        console.log('Resposta da API:', data);
+        setIsSucess(true);
       })
       .catch((error) => {
-        console.error('Erro ao enviar os dados:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error,
+        })
       });
   };
+
+  if (isSucess) return <Redirect to="/app" />
 
   return (
     <div>
