@@ -61,7 +61,6 @@ function Cadastro() {
       body: JSON.stringify(state),
     })
       .then((response) => {
-        console.log(response);
         if (response.status === 201) {
           return response.json()
         }
