@@ -1,7 +1,10 @@
+import Router from './Router';
+import Login from './screens/Login'
+
 function App() {
   return (
-    <div>Home</div>
-  )
+    <Router />
+  );
 }
 
-export default App
+export default App;
