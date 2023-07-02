@@ -45,11 +45,12 @@ function Cadastro() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    enviarDados();
+    sendData();
   };
 
-  const enviarDados = () => {
-    fetch('URL_DA_SUA_API', {
+  const sendData = () => {
+    const URL_API = '';
+    fetch(URL_API, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
