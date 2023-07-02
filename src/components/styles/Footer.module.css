@@ -1,0 +1,9 @@
+.footerContent {
+  width: 100%;
+  background-color: var(--purple-900);
+  color: var(--gray-100);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 1rem;
+}
