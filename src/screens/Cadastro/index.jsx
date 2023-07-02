@@ -52,7 +52,7 @@ function Cadastro() {
   };
 
   const sendData = () => {
-    const URL_API = '';
+    const URL_API = 'https://hackton-equipe-7.cyclic.app/signup';
     fetch(URL_API, {
       method: 'POST',
       headers: {
@@ -61,6 +61,7 @@ function Cadastro() {
       body: JSON.stringify(state),
     })
       .then((response) => {
+        console.log(response);
         if (response.status === 201) {
           return response.json()
         }
