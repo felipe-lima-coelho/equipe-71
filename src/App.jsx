@@ -1,7 +1,15 @@
+import Router from './Router';
+import Header from './components/Header';
+import HeaderProvider from './context/contexts/HeaderProvider';
+import Login from './screens/Login'
+
 function App() {
   return (
-    <div>Home</div>
-  )
+    <HeaderProvider>
+      <Header />
+      <Router />
+    </HeaderProvider>
+  );
 }
 
-export default App
+export default App;
