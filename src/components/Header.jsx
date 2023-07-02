@@ -3,7 +3,7 @@ import headerContext from '../context/providers/headerContext';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import styles from './styles/Header.module.css';
 import { ArrowCircleLeft, Coins } from '@phosphor-icons/react';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.svg';
 
 function Header() {
   const { pageUrl, setPageUrl, points, setPoints } = useContext(headerContext);
