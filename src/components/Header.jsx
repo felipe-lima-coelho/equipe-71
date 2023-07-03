@@ -2,8 +2,8 @@ import { useContext, useEffect } from 'react';
 import headerContext from '../context/providers/headerContext';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import styles from './styles/Header.module.css';
-import { ArrowCircleLeft, Coins } from '@phosphor-icons/react';
-import logo from '../assets/logo.svg';
+import { ArrowCircleLeft, UserCircle } from '@phosphor-icons/react';
+import logo from '../assets/logo2.png';
 
 function Header() {
   const { pageUrl, setPageUrl, points, setPoints } = useContext(headerContext);
@@ -40,19 +40,20 @@ function Header() {
           pageUrl !== '/app' ? (
             <button
               onClick={ handleBackPage }
+              className={ styles.goBackBtn }
             >
-              <ArrowCircleLeft size={ 32 } />
+              <ArrowCircleLeft size={ 36 } />
             </button>
           ) : <div className={ styles.imgTransparentOnHeader }></div>
         }
         <img
           src={ logo }
-          alt="Coração amarelo com símbolo de dinheiro"
+          alt="Coração verde com símbolo de dinheiro"
           className={ styles.logo }
         />
 
         <div>
-          <Coins size={ 32 } />
+          <UserCircle size={ 36 } />
           { points }
         </div>
       </header>

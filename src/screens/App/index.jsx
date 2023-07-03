@@ -1,7 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import styles from './styles.module.css';
 import motivationalPhrases from '../../helpers/mock/motivationalPhrases';
 import Swal from 'sweetalert2';
+import { Coin, Coins } from '@phosphor-icons/react';
+import usersOnOnChampionship from '../../helpers/mock/usersPositionOnChampionship';
+import CardUsersOnChampionship from '../../components/CardUsersOnChampionship';
+import graficos from './assets/graficos.svg'
+import headerContext from '../../context/providers/headerContext';
 
 const msgMotivational = () => {
   const randomIndex = Math.floor(Math.random() * motivationalPhrases.length);
@@ -10,7 +16,12 @@ const msgMotivational = () => {
 
 function App() {
   const [isMsgAlreadySent, setIsMsgAlreadySent] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [isChampionshipActive, setIsChampionshipActive] = useState(false);
+  const [progress, setProgress] = useState(50);
+
+  const { setPageUrl } = useContext(headerContext);
+
+  const history = useHistory();
 
   useEffect(() => {
     const isStorageMsgMotivational = localStorage.getItem('msgAlreadySent');
@@ -36,14 +47,64 @@ function App() {
 
   return (
     <div>
-      <main>
+      <main className={ styles.mainContainer }>
         <section>
+          <div className={ styles.coinsIcons }>
+            <Coin size={ 32 } />
+            <Coins size={ 32 } />
+          </div>
           <div className={ styles.progressBarOuter }>
             <div
               className={ styles.progressBarInner } style={{ width: `${progress}%` }}
             ></div>
           </div>
         </section>
+
+        <button
+          className={ styles.championshipBtn }
+          onClick={ () => setIsChampionshipActive(!isChampionshipActive) }
+        >
+          <h2>7ª Posição na 2ª Divisão</h2>
+          {
+            isChampionshipActive && (
+              <div className={ styles.championshipContainerCards }>
+              {
+                usersOnOnChampionship.map((user) => (
+                  <div
+                    key={ user.name }
+                  >
+                    <CardUsersOnChampionship
+                      name={ user.name }
+                      position={ user.position }
+                    />
+                  </div>
+                ))
+              }
+            </div>
+            )
+          }
+        </button>
+
+        <section className={ styles.expenseCharts }>
+          <div>
+            <img src={ graficos } alt="" />
+            <p>
+              Economia no mês de <span className={ styles.amountSaved }>R$ 540,00</span>
+            </p>
+          </div>
+
+          <button>DETALHES</button>
+        </section>
+
+        <button
+          className={ styles.talkBtn }
+          onClick={ () => {
+            setPageUrl('/talk')
+            history.push('/talk')
+          }}
+        >
+          VAMOS CONVERSAR
+        </button>
       </main>
 
       {
