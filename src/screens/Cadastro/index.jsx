@@ -54,7 +54,7 @@ function Cadastro() {
   };
 
   const sendData = () => {
-    const URL_API = 'https://hackton-equipe-7.cyclic.app/signup';
+    const URL_API = 'https://equipe7.onrender.com/signup';
     fetch(URL_API, {
       method: 'POST',
       headers: {

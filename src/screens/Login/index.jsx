@@ -34,7 +34,7 @@ function Login() {
 
   const sendData = () => {
     // console.log(state);
-    // const URL_API = 'https://hackton-equipe-7.cyclic.app/login';
+    // const URL_API = 'https://equipe7.onrender.com/login';
     // fetch(URL_API, {
     //   method: 'POST',
     //   headers: {
