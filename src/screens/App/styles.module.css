@@ -1,11 +1,61 @@
+.mainContainer {
+  height: calc(100vh - 7.5rem);
+  padding: 2rem;
+}
+
+.coinsIcons {
+  display: flex;
+  justify-content: space-between;
+}
+
 .progressBarOuter {
-  width: 300px;
-  padding: 10px;
-  background-color: rgb(165, 136, 234);
+  margin-top: 0.12rem;
+  width: 100%;
+  background-color: var(--gray-600);
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
 }
 
 .progressBarInner {
   width: 100%;
-  height: 20px;
-  background-color: lightgray;
+  height: 1rem;
+  background-color: var(--orange-100);
+  border-radius: 6px;
+}
+
+.championshipBtn {
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: var(--gray-700);
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  flex-direction: column;
+  border: none;
+}
+
+.championshipBtn h2 {
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}
+
+.championshipBtn h2::after {
+  content: '⌄';
+  margin-left: 0.5rem;
+}
+
+.championshipContainerCards {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  flex-direction: column;
+  padding: 1rem 1rem 0 1rem;
+  background-color: var(--gray-800);
+  border-radius: 6px;
+  margin-top: 1rem;
+  width: 100%;
 }

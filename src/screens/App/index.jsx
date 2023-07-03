@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import motivationalPhrases from '../../helpers/mock/motivationalPhrases';
 import Swal from 'sweetalert2';
+import { Coin, Coins } from '@phosphor-icons/react';
+import usersOnOnChampionship from '../../helpers/mock/usersPositionOnChampionship';
+import CardUsersOnChampionship from '../../components/CardUsersOnChampionship';
 
 const msgMotivational = () => {
   const randomIndex = Math.floor(Math.random() * motivationalPhrases.length);
@@ -10,7 +13,8 @@ const msgMotivational = () => {
 
 function App() {
   const [isMsgAlreadySent, setIsMsgAlreadySent] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [isChampionshipActive, setIsChampionshipActive] = useState(false);
+  const [progress, setProgress] = useState(50);
 
   useEffect(() => {
     const isStorageMsgMotivational = localStorage.getItem('msgAlreadySent');
@@ -36,14 +40,44 @@ function App() {
 
   return (
     <div>
-      <main>
+      <main className={ styles.mainContainer }>
         <section>
+          <div className={ styles.coinsIcons }>
+            <Coin size={ 32 } />
+            <Coins size={ 32 } />
+          </div>
           <div className={ styles.progressBarOuter }>
             <div
               className={ styles.progressBarInner } style={{ width: `${progress}%` }}
             ></div>
           </div>
         </section>
+
+        <button
+          className={ styles.championshipBtn }
+          onClick={ () => setIsChampionshipActive(!isChampionshipActive) }
+        >
+          <h2>7ª Posição na 2ª Divisão</h2>
+          {
+            isChampionshipActive && (
+              <div className={ styles.championshipContainerCards }>
+              {
+                usersOnOnChampionship.map((user) => (
+                  <div
+                    key={ user.name }
+                  >
+                    <CardUsersOnChampionship
+                      name={ user.name }
+                      position={ user.position }
+                    />
+                  </div>
+                ))
+              }
+            </div>
+            )
+          }
+
+        </button>
       </main>
 
       {

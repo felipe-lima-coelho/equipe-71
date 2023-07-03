@@ -33,41 +33,41 @@ function Login() {
   };
 
   const sendData = () => {
-    console.log(state);
-    const URL_API = 'https://hackton-equipe-7.cyclic.app/login';
-    fetch(URL_API, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: state,
-    })
-      .then((response) => {
-        if (response.status === 201) {
-          console.log('Isso aí');
-          return response.json()
-        }
-        if (response.status === 422) {
-          throw new Error("Erro nos dados enviados!");
-        }
-        if (response.status === 404) {
-          throw new Error("Não foi possível encontrar o email e/ou senha!");
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        // setPageUrl('/app');
-        // setIsSucess(true);
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: error,
-        })
-      });
-    // setPageUrl('/app');
-    // setIsSucess(true);
+    // console.log(state);
+    // const URL_API = 'https://hackton-equipe-7.cyclic.app/login';
+    // fetch(URL_API, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: state,
+    // })
+    //   .then((response) => {
+    //     if (response.status === 201) {
+    //       console.log('Isso aí');
+    //       return response.json()
+    //     }
+    //     if (response.status === 422) {
+    //       throw new Error("Erro nos dados enviados!");
+    //     }
+    //     if (response.status === 404) {
+    //       throw new Error("Não foi possível encontrar o email e/ou senha!");
+    //     }
+    //   })
+    //   .then((data) => {
+    //     console.log(data);
+    //     // setPageUrl('/app');
+    //     // setIsSucess(true);
+    //   })
+    //   .catch((error) => {
+    //     Swal.fire({
+    //       icon: 'error',
+    //       title: 'Oops...',
+    //       text: error,
+    //     })
+    //   });
+    setPageUrl('/app');
+    setIsSucess(true);
   };
 
   const handleClickCadastre = () => {
