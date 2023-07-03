@@ -1,7 +1,7 @@
 .mainContainer {
   position: relative;
-  height: calc(100vh - 7.5rem);
-  padding: 2rem;
+  height: calc(100vh - 3.8rem);
+  padding: 6rem 2rem;
 }
 
 .coinsIcons {
